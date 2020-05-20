@@ -30,6 +30,7 @@ const incrementCartTotal = (price) => {
 
 const incrementCoffeeSold = (amountSold) => {
   //Increments number of coffees sold
+
   let coffeeSold = Number($('#coffee-sold-counter').html());
   coffeeSold += amountSold;
 
@@ -38,6 +39,7 @@ const incrementCoffeeSold = (amountSold) => {
 
 const setProgressAndStatus = (progressVal, statusMsg) => {
   //Progress value fills the progress line and a message
+
   $('#order-progress').attr('value', progressVal);
   $('#order-status-message').html(statusMsg);
 };
@@ -50,4 +52,9 @@ const setProgressAndStatus = (progressVal, statusMsg) => {
 $('.add-to-order').on('click', () => {
   addItemToCart('Coffee');
   incrementCartTotal(1.50);
+});
+
+$('#place-order').on('click', () => {
+  incrementCoffeeSold($('#cart-items').children().length);
+  resetCart();
 });
